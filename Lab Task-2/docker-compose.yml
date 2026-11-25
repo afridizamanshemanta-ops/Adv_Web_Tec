@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: jobconnect-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: jobconnect_lab
+    ports:
+      - "5432:5432"
+    volumes:
+      - jobconnect_pgdata:/var/lib/postgresql/data
+volumes:
+  jobconnect_pgdata:

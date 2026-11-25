@@ -1,0 +1,23 @@
+{
+  "info": {
+    "name": "JobConnect - Lab Task 2",
+    "description": "POST and GET tests for Users, Jobs and Applications. Run create requests in order: User, Job, Application.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{"key":"baseUrl","value":"http://localhost:3000"}],
+  "item": [
+    {"name":"Users","item":[
+      {"name":"POST - Create User","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"fullName\": \"Rahim Ahmed\",\n  \"email\": \"rahim@example.com\",\n  \"role\": \"seeker\"\n}","options":{"raw":{"language":"json"}}},"url":{"raw":"{{baseUrl}}/users","host":["{{baseUrl}}"],"path":["users"]}}},
+      {"name":"GET - All Users","request":{"method":"GET","url":{"raw":"{{baseUrl}}/users","host":["{{baseUrl}}"],"path":["users"]}}},
+      {"name":"POST - Validation Error (Expected 400)","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"fullName\": \"\",\n  \"email\": \"invalid-email\"\n}","options":{"raw":{"language":"json"}}},"url":{"raw":"{{baseUrl}}/users","host":["{{baseUrl}}"],"path":["users"]}}}
+    ]},
+    {"name":"Jobs","item":[
+      {"name":"POST - Create Job","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"title\": \"Junior Web Developer\",\n  \"companyName\": \"Tech Solutions Ltd.\",\n  \"location\": \"Dhaka, Bangladesh\",\n  \"description\": \"Develop web applications using JavaScript and NestJS.\",\n  \"salary\": 35000\n}","options":{"raw":{"language":"json"}}},"url":{"raw":"{{baseUrl}}/jobs","host":["{{baseUrl}}"],"path":["jobs"]}}},
+      {"name":"GET - All Jobs","request":{"method":"GET","url":{"raw":"{{baseUrl}}/jobs","host":["{{baseUrl}}"],"path":["jobs"]}}}
+    ]},
+    {"name":"Applications","item":[
+      {"name":"POST - Create Application (use existing userId/jobId)","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"userId\": 1,\n  \"jobId\": 1,\n  \"coverLetter\": \"I am interested in this position.\"\n}","options":{"raw":{"language":"json"}}},"url":{"raw":"{{baseUrl}}/applications","host":["{{baseUrl}}"],"path":["applications"]}}},
+      {"name":"GET - All Applications","request":{"method":"GET","url":{"raw":"{{baseUrl}}/applications","host":["{{baseUrl}}"],"path":["applications"]}}}
+    ]}
+  ]
+}
